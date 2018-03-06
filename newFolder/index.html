@@ -1,0 +1,32 @@
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" href="../newFolder/bootstrap.min.css">
+
+</head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <label class="control-label">Username</label>
+        <input type="text" class="form-control" id="username" name="username"/>
+        <br/>
+        <label class="control-label">Message</label>
+        <textarea class="form-control" id ="description" name="description" class="span13" ></textarea>
+        <br/>
+        <input type="submit" value="submit" id="submit" class="btn btn-primary">
+        <hr/>
+
+        <p><label class="control-label">Student Name: <span id = "studentName"></span></label></p>
+        <p><label class="control-label">Description: <span id = "description"></span></label></p>
+      </div>
+    </div>
+
+  </body>
+</html>
+<script src="/socket.io/socket.io.js"></script>
+<script>
+  var socket = io.connect('http://localhost:3000');
+  socket.on('news', function (data) {
+    console.log(data);
+    socket.emit('my other event', { my: 'data' });
+  });
+</script>
